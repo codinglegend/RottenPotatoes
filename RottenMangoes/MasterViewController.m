@@ -19,14 +19,33 @@
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//        NSJSONSerialization dataWithJSONObject
+// SessionDownloadTask saves to disk, then gets it and brings it back (large files, stuff you want to write on to disk) --> gives you NSURL
+// SessionTask saves to memory, gets you NSData
+
+-(void)fetchData {
+    
+    NSURL *moviesApiUrl = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j"]; //this is a convenience method, does the same thing as alloc init
+    
+    NSMutableURLRequest *moviesRequest = [NSMutableURLRequest requestWithURL:moviesApiUrl];
+    [moviesRequest setHTTPMethod: @"GET"]; // only works if it's an NSMutableURLRequest
+    
+    NSURLSessionTask *getMovies = [[NSURLSession sharedSession] dataTaskWithRequest:moviesRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        NSString *text = [[NSString alloc ] initWithContentsOfURL:moviesApiUrl encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"JSON Response: %@", text);
+        
+    }
+                                   
+];
+    [getMovies resume]; // tasks are always returned in a suspended state. you must call resume to get them started.
 }
+
+-(void)viewDidLoad{
+    
+    [self fetchData]; //calling a method in viewDidLoad
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
