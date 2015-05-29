@@ -13,10 +13,11 @@
 @property (nonatomic) int year;
 @property (nonatomic) int runTime;
 @property (nonatomic) NSString* rating;
+@property (nonatomic) NSString* thumbnailURL;
 
 //-(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 
--(instancetype)initWithMovie:(NSString*)movieTitle andYear:(int)year andRunTime:(int)runTime andRating:(NSString*)rating;
+-(instancetype)initWithMovie:(NSString*)movieTitle andYear:(int)year andRunTime:(int)runTime andRating:(NSString*)rating andThumbnail:thumbnailURL;
 
 
 

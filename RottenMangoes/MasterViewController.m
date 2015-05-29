@@ -49,25 +49,26 @@
         NSArray *moviesArray = [parsedData objectForKey:@"movies"]; //is the same as the literal: parsedData[@"movies"];
         
         
-        for (NSDictionary *movieDetails in moviesArray){
+        for (NSDictionary *movieDetails in moviesArray){ // this means get every object in this array and MAKE it an NSDictionary
             
             NSString* newTitle = [movieDetails objectForKey:@"title"];
             NSString* rating = [movieDetails objectForKey:@"mpaa_rating"];
             NSNumber* yearAsObject  = [movieDetails objectForKey:@"year"];
             NSNumber* runTimeAsObject = [movieDetails objectForKey:@"runtime"];
-            
-            Movies *movie = [[Movies alloc] initWithMovie:newTitle andYear:yearAsObject.intValue andRunTime:runTimeAsObject.intValue andRating:rating];
+            NSString* thumbnailURL = [[movieDetails objectForKey:@"posters"] objectForKey:@"thumbnail"];
+        
+            Movies *movie = [[Movies alloc] initWithMovie:newTitle andYear:yearAsObject.intValue andRunTime:runTimeAsObject.intValue andRating:rating andThumbnail:thumbnailURL];
     
-// the perhaps less clean way to do it:
+// the perhaps less clean way to do it (although it makes more sense to me):
 //  Movies *movie = [[Movies alloc] initWithMovie:[movieDetails objectForKey:@"title"] andYear:[movieDetails objectForKey:@"year"] andRunTime:[movieDetails objectForKey:@"runtime"] andRating:[movieDetails objectForKey:@"mpaa_rating"]];
             
             NSLog(@"Movie objects: %@", movie); //NSLog + objects, calls on a predefined method called description, which we defined in movies.m
             
             [self.moviesFound addObject:movie];
-        }
+                             
+                             }
         
-        
-    }];
+                             }];
     
     [getMovies resume]; // tasks are always returned in a suspended state. you must call resume to get them started.
 }

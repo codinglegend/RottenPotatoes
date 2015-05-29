@@ -10,7 +10,7 @@
 
 @implementation Movies
 
--(instancetype)initWithMovie:(NSString*)movieTitle andYear:(int)year andRunTime:(int)runTime andRating:(NSString*)rating
+-(instancetype)initWithMovie:(NSString*)movieTitle andYear:(int)year andRunTime:(int)runTime andRating:(NSString*)rating andThumbnail:thumbnailURL
 {
     self = [super init];
     if (self) {
@@ -18,13 +18,14 @@
         _year = year;
         _runTime = runTime;
         _rating = rating;
+        _thumbnailURL = thumbnailURL;
     }
     return self;
 }
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"Movie title[%@], Year[%d], RunTime[%d], Rating[%@]", self.movieTitle, self.year, self.runTime, self.rating ];
+    return [NSString stringWithFormat:@"Movie title[%@], Year[%d], RunTime[%d], Rating[%@], Thumbnail[%@]", self.movieTitle, self.year, self.runTime, self.rating, self.thumbnailURL];
 }
 
 @end
