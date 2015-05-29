@@ -29,7 +29,7 @@
 // NSURLSessionDownloadTask to download from the internet (or your computer), saves to disk, then gets it and brings it back (large files, stuff you want to write on to disk) --> gives you NSURL
 // NSURLSessionTask also to download from the internet (or your computer), saves to memory, gets you NSData from JSON?
 
--(void)fetchData {
+-(void)fetchData { // never return for void, but always return for objects (Object) or (instancetype) as return type.
     
     NSURL *moviesApiUrl = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j&page_limit=20"]; //this is a convenience method, does the same thing as alloc init
     
@@ -51,16 +51,23 @@
         
         for (NSDictionary *movieDetails in moviesArray){ // this means get every object in this array and MAKE it an NSDictionary
             
-            NSString* newTitle = [movieDetails objectForKey:@"title"];
-            NSString* rating = [movieDetails objectForKey:@"mpaa_rating"];
-            NSNumber* yearAsObject  = [movieDetails objectForKey:@"year"];
-            NSNumber* runTimeAsObject = [movieDetails objectForKey:@"runtime"];
-            NSString* thumbnailURL = [[movieDetails objectForKey:@"posters"] objectForKey:@"thumbnail"];
-        
-            Movies *movie = [[Movies alloc] initWithMovie:newTitle andYear:yearAsObject.intValue andRunTime:runTimeAsObject.intValue andRating:rating andThumbnail:thumbnailURL];
+// nixed these, I don't prefer this style at all
+//            NSString* newTitle = [movieDetails objectForKey:@"title"];
+//            NSString* rating = [movieDetails objectForKey:@"mpaa_rating"];
+//            NSNumber* yearAsObject  = [movieDetails objectForKey:@"year"];
+//            NSNumber* runTimeAsObject = [movieDetails objectForKey:@"runtime"];
+//            NSString* thumbnailURL = [[movieDetails objectForKey:@"posters"] objectForKey:@"thumbnail"];
+//        
+//            Movies *movie = [[Movies alloc] initWithMovie:newTitle andYear:yearAsObject.intValue andRunTime:runTimeAsObject.intValue andRating:rating andThumbnail:thumbnailURL];
     
-// the perhaps less clean way to do it (although it makes more sense to me):
-//  Movies *movie = [[Movies alloc] initWithMovie:[movieDetails objectForKey:@"title"] andYear:[movieDetails objectForKey:@"year"] andRunTime:[movieDetails objectForKey:@"runtime"] andRating:[movieDetails objectForKey:@"mpaa_rating"]];
+            
+            // below, year and runtime are being return from a dictionary/array which means they are objects...which means we need to access the intvalue
+
+            Movies *movie = [[Movies alloc] initWithMovie:[movieDetails objectForKey:@"title"]
+                                                  andYear:[[movieDetails objectForKey:@"year"] intValue]
+                                                  andRunTime:[[movieDetails objectForKey:@"runtime"] intValue]
+                                                  andRating:[movieDetails objectForKey:@"mpaa_rating"]
+                                                  andThumbnail:[movieDetails objectForKey:@"posters"]];
             
             NSLog(@"Movie objects: %@", movie); //NSLog + objects, calls on a predefined method called description, which we defined in movies.m
             
