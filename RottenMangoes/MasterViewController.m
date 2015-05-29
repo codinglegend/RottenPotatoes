@@ -8,8 +8,13 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "Movies.h"
 
 @interface MasterViewController ()
+
+@property (nonatomic) NSMutableArray* moviesFound; //an object property always starts out as nil (until you put something in it via alloc init)
+
+@property (nonatomic) NSMutableArray* stuff;
 
 @end
 
@@ -20,28 +25,56 @@
 }
 
 
-//        NSJSONSerialization dataWithJSONObject
-// SessionDownloadTask saves to disk, then gets it and brings it back (large files, stuff you want to write on to disk) --> gives you NSURL
-// SessionTask saves to memory, gets you NSData
+//        NSJSONSerialization +dataWithJSONObject:options:error  +JSONObjectWithData:options:error
+// NSURLSessionDownloadTask to download from the internet (or your computer), saves to disk, then gets it and brings it back (large files, stuff you want to write on to disk) --> gives you NSURL
+// NSURLSessionTask also to download from the internet (or your computer), saves to memory, gets you NSData from JSON?
 
 -(void)fetchData {
     
-    NSURL *moviesApiUrl = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j"]; //this is a convenience method, does the same thing as alloc init
+    NSURL *moviesApiUrl = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j&page_limit=20"]; //this is a convenience method, does the same thing as alloc init
     
     NSMutableURLRequest *moviesRequest = [NSMutableURLRequest requestWithURL:moviesApiUrl];
     [moviesRequest setHTTPMethod: @"GET"]; // only works if it's an NSMutableURLRequest
     
+    
     NSURLSessionTask *getMovies = [[NSURLSession sharedSession] dataTaskWithRequest:moviesRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-        NSString *text = [[NSString alloc ] initWithContentsOfURL:moviesApiUrl encoding:NSUTF8StringEncoding error:nil];
-        NSLog(@"JSON Response: %@", text);
+// getting the actual contents of the URL (but a bad way to do it, just a long string):
+//        NSString *text = [[NSString alloc ] initWithContentsOfURL:moviesApiUrl encoding:NSUTF8StringEncoding error:nil];
+//        NSLog(@"JSON Response: %@", text);
         
-    }
-                                   
-];
+        //step: Use a JSON Parser to convert/deserialize the JSON string into an NSDictionary
+        NSDictionary *parsedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//        NSLog(@"Dictionary: %@", parsedData);
+        
+        NSArray *moviesArray = [parsedData objectForKey:@"movies"]; //is the same as the literal: parsedData[@"movies"];
+        
+        
+        for (NSDictionary *movieDetails in moviesArray){
+            
+            NSString* newTitle = [movieDetails objectForKey:@"title"];
+            NSString* rating = [movieDetails objectForKey:@"mpaa_rating"];
+            NSNumber* yearAsObject  = [movieDetails objectForKey:@"year"];
+            NSNumber* runTimeAsObject = [movieDetails objectForKey:@"runtime"];
+            
+            Movies *movie = [[Movies alloc] initWithMovie:newTitle andYear:yearAsObject.intValue andRunTime:runTimeAsObject.intValue andRating:rating];
+    
+// the perhaps less clean way to do it:
+//  Movies *movie = [[Movies alloc] initWithMovie:[movieDetails objectForKey:@"title"] andYear:[movieDetails objectForKey:@"year"] andRunTime:[movieDetails objectForKey:@"runtime"] andRating:[movieDetails objectForKey:@"mpaa_rating"]];
+            
+            NSLog(@"Movie objects: %@", movie); //NSLog + objects, calls on a predefined method called description, which we defined in movies.m
+            
+            [self.moviesFound addObject:movie];
+        }
+        
+        
+    }];
+    
     [getMovies resume]; // tasks are always returned in a suspended state. you must call resume to get them started.
 }
 
 -(void)viewDidLoad{
+    
+    self.moviesFound = [[NSMutableArray alloc] init];
     
     [self fetchData]; //calling a method in viewDidLoad
 }

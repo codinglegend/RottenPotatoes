@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B557E21C1B17C73F00AF90BA /* Movies.m in Sources */ = {isa = PBXBuildFile; fileRef = B557E21B1B17C73F00AF90BA /* Movies.m */; };
 		B5E393691B16DE6A00EAC48C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E393681B16DE6A00EAC48C /* main.m */; };
 		B5E3936C1B16DE6A00EAC48C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3936B1B16DE6A00EAC48C /* AppDelegate.m */; };
 		B5E3936F1B16DE6B00EAC48C /* RottenMangoes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5E3936D1B16DE6B00EAC48C /* RottenMangoes.xcdatamodeld */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B557E21A1B17C73F00AF90BA /* Movies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movies.h; sourceTree = "<group>"; };
+		B557E21B1B17C73F00AF90BA /* Movies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movies.m; sourceTree = "<group>"; };
 		B5E393631B16DE6A00EAC48C /* RottenMangoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenMangoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E393671B16DE6A00EAC48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5E393681B16DE6A00EAC48C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 		B5E393651B16DE6A00EAC48C /* RottenMangoes */ = {
 			isa = PBXGroup;
 			children = (
+				B557E21A1B17C73F00AF90BA /* Movies.h */,
+				B557E21B1B17C73F00AF90BA /* Movies.m */,
 				B5E3936A1B16DE6A00EAC48C /* AppDelegate.h */,
 				B5E3936B1B16DE6A00EAC48C /* AppDelegate.m */,
 				B5E393701B16DE6B00EAC48C /* MasterViewController.h */,
@@ -227,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B557E21C1B17C73F00AF90BA /* Movies.m in Sources */,
 				B5E393751B16DE6B00EAC48C /* DetailViewController.m in Sources */,
 				B5E393721B16DE6B00EAC48C /* MasterViewController.m in Sources */,
 				B5E3936C1B16DE6A00EAC48C /* AppDelegate.m in Sources */,
@@ -422,6 +428,7 @@
 				B5E3938E1B16DE6B00EAC48C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B5E3938F1B16DE6B00EAC48C /* Build configuration list for PBXNativeTarget "RottenMangoesTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +437,7 @@
 				B5E393911B16DE6B00EAC48C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
