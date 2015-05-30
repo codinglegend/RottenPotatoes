@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B557E21C1B17C73F00AF90BA /* Movies.m in Sources */ = {isa = PBXBuildFile; fileRef = B557E21B1B17C73F00AF90BA /* Movies.m */; };
+		B557E21F1B18EB7300AF90BA /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B557E21E1B18EB7300AF90BA /* CollectionViewCell.m */; };
 		B5E393691B16DE6A00EAC48C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E393681B16DE6A00EAC48C /* main.m */; };
 		B5E3936C1B16DE6A00EAC48C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3936B1B16DE6A00EAC48C /* AppDelegate.m */; };
 		B5E3936F1B16DE6B00EAC48C /* RottenMangoes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5E3936D1B16DE6B00EAC48C /* RottenMangoes.xcdatamodeld */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		B557E21A1B17C73F00AF90BA /* Movies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movies.h; sourceTree = "<group>"; };
 		B557E21B1B17C73F00AF90BA /* Movies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movies.m; sourceTree = "<group>"; };
+		B557E21D1B18EB7300AF90BA /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		B557E21E1B18EB7300AF90BA /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		B5E393631B16DE6A00EAC48C /* RottenMangoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenMangoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E393671B16DE6A00EAC48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5E393681B16DE6A00EAC48C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				B5E393711B16DE6B00EAC48C /* MasterViewController.m */,
 				B5E393731B16DE6B00EAC48C /* DetailViewController.h */,
 				B5E393741B16DE6B00EAC48C /* DetailViewController.m */,
+				B557E21D1B18EB7300AF90BA /* CollectionViewCell.h */,
+				B557E21E1B18EB7300AF90BA /* CollectionViewCell.m */,
 				B5E393761B16DE6B00EAC48C /* Main.storyboard */,
 				B5E393791B16DE6B00EAC48C /* Images.xcassets */,
 				B5E3937B1B16DE6B00EAC48C /* LaunchScreen.xib */,
@@ -237,6 +242,7 @@
 				B5E393721B16DE6B00EAC48C /* MasterViewController.m in Sources */,
 				B5E3936C1B16DE6A00EAC48C /* AppDelegate.m in Sources */,
 				B5E393691B16DE6A00EAC48C /* main.m in Sources */,
+				B557E21F1B18EB7300AF90BA /* CollectionViewCell.m in Sources */,
 				B5E3936F1B16DE6B00EAC48C /* RottenMangoes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
