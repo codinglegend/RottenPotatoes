@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fz4-LM-b3v">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master View Controller-->
@@ -12,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lTL-aY-kGz">
-                            <size key="itemSize" width="155" height="152"/>
+                            <size key="itemSize" width="105" height="119"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -22,21 +23,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="155" height="152"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lf-gf-S8j">
-                                            <rect key="frame" x="38" y="27" width="78" height="76"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Lf-gf-S8j">
+                                            <rect key="frame" x="25" y="8" width="54" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="80" id="UtN-bN-yM0"/>
+                                                <constraint firstAttribute="width" constant="54" id="d3C-62-Fkg"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKK-ex-OVM">
-                                            <rect key="frame" x="58" y="117" width="38" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKK-ex-OVM">
+                                            <rect key="frame" x="8" y="96" width="89" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="1Lf-gf-S8j" firstAttribute="top" secondItem="4Hz-e5-1En" secondAttribute="topMargin" id="4iE-w5-qm4"/>
+                                    <constraint firstItem="kKK-ex-OVM" firstAttribute="leading" secondItem="4Hz-e5-1En" secondAttribute="leadingMargin" id="DRx-b1-fso"/>
+                                    <constraint firstItem="1Lf-gf-S8j" firstAttribute="centerX" secondItem="4Hz-e5-1En" secondAttribute="centerX" constant="-0.5" id="SFb-Fv-PFh"/>
+                                    <constraint firstItem="kKK-ex-OVM" firstAttribute="trailing" secondItem="4Hz-e5-1En" secondAttribute="trailingMargin" id="Xng-hK-ORx"/>
+                                    <constraint firstItem="kKK-ex-OVM" firstAttribute="top" secondItem="1Lf-gf-S8j" secondAttribute="bottom" constant="8" id="ggu-dU-V6n"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="movieTitleLabel" destination="kKK-ex-OVM" id="5xe-me-XFf"/>
                                     <outlet property="thumbnailImageView" destination="1Lf-gf-S8j" id="Bmr-jO-ebK"/>
