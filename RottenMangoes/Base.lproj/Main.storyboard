@@ -25,8 +25,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="155" height="152"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lf-gf-S8j">
+                                            <rect key="frame" x="38" y="27" width="78" height="76"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKK-ex-OVM">
-                                            <rect key="frame" x="56" y="123" width="38" height="21"/>
+                                            <rect key="frame" x="58" y="117" width="38" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -34,6 +37,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="movieTitleLabel" destination="kKK-ex-OVM" id="5xe-me-XFf"/>
+                                    <outlet property="thumbnailImageView" destination="1Lf-gf-S8j" id="Bmr-jO-ebK"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

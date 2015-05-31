@@ -39,13 +39,13 @@
     
     
     NSURLSessionTask *getMovies = [[NSURLSession sharedSession] dataTaskWithRequest:moviesRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-// getting the actual contents of the URL (but a bad way to do it, just a long string):
-//        NSString *text = [[NSString alloc ] initWithContentsOfURL:moviesApiUrl encoding:NSUTF8StringEncoding error:nil];
-//        NSLog(@"JSON Response: %@", text);
+        // getting the actual contents of the URL (but a bad way to do it, just a long string):
+        //        NSString *text = [[NSString alloc ] initWithContentsOfURL:moviesApiUrl encoding:NSUTF8StringEncoding error:nil];
+        //        NSLog(@"JSON Response: %@", text);
         
         //step: Use a JSON Parser to convert/deserialize the JSON string into an NSDictionary
         NSDictionary *parsedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//        NSLog(@"Dictionary: %@", parsedData);
+        //        NSLog(@"Dictionary: %@", parsedData);
         
         NSArray *moviesArray = [parsedData objectForKey:@"movies"]; //is the same as the literal: parsedData[@"movies"];
         
@@ -53,11 +53,11 @@
         for (NSDictionary *movieDetails in moviesArray){ // this means get every object in this array and MAKE it an NSDictionary
             
             // below, year and runtime are being return from a dictionary/array which means they are objects...which means we need to access the intvalue
-
+            
             Movies *movie = [[Movies alloc] initWithMovie:[movieDetails objectForKey:@"title"]
                                                   andYear:[[movieDetails objectForKey:@"year"] intValue]
-                                                  andRunTime:[[movieDetails objectForKey:@"runtime"] intValue]
-                                                  andRating:[movieDetails objectForKey:@"mpaa_rating"]
+                                               andRunTime:[[movieDetails objectForKey:@"runtime"] intValue]
+                                                andRating:[movieDetails objectForKey:@"mpaa_rating"]
                                              andThumbnail:[[movieDetails objectForKey:@"posters"] objectForKey:@"thumbnail"]];
             
             NSLog(@"Movie objects: %@", movie); //when you NSLog an object, you call on a predefined method called description, which we defined in movies.m
@@ -115,7 +115,20 @@
     
     CollectionViewCell *customCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"customCellIdentifier" forIndexPath:indexPath];
     
-    customCell.backgroundColor = [UIColor redColor];
+    //    Movies *movie = self.moviesFound[indexPath.item]; // you could create an instance as you've done here to access movie.movieTitle below in this way: customCell.movieTitleLabel.text = movie.movieTitle...or you could do it the way I did
+    
+    customCell.backgroundColor = [UIColor lightGrayColor];
+    collectionView.backgroundColor = [UIColor darkGrayColor];
+    customCell.movieTitleLabel.text = [self.moviesFound[indexPath.item] movieTitle]; // assigning the property (movieTitle) we want to the relevant IBOutlet (movieTitleLabel)
+    
+    // my thumbnailURL is a string, need to turn it into a UIImage:
+    
+    Movies *movie = self.moviesFound[indexPath.item];
+    NSURL *movieThumbnailURL = [NSURL URLWithString:movie.thumbnailURL]; //because NSData below only takes an NSURL
+    NSData *movieThumbnailData = [NSData dataWithContentsOfURL:movieThumbnailURL];
+    UIImage *movieThumbnail = [UIImage imageWithData:movieThumbnailData];
+    
+    customCell.thumbnailImageView.image = movieThumbnail;
     
     return customCell;
 }

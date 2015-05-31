@@ -17,11 +17,6 @@
 
 //-(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 
--(instancetype)initWithMovie:(NSString*)movieTitle andYear:(int)year andRunTime:(int)runTime andRating:(NSString*)rating andThumbnail:thumbnailURL;
-
-
-
-
-
+-(instancetype)initWithMovie:(NSString*)movieTitle andYear:(int)year andRunTime:(int)runTime andRating:(NSString*)rating andThumbnail:(NSString*)thumbnailURL;
 
 @end
