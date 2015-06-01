@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fz4-LM-b3v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Th-PF-ghJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Master View Controller-->
+        <!--RottenMangoes-->
         <scene sceneID="6Pa-lS-4P3">
             <objects>
                 <collectionViewController id="fz4-LM-b3v" customClass="MasterViewController" sceneMemberID="viewController">
@@ -60,8 +60,27 @@
                             <outlet property="delegate" destination="fz4-LM-b3v" id="rah-2f-U1H"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="RottenMangoes" id="7lW-5v-60G"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ya-4w-5vd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1511" y="171"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VQJ-Sh-N3Q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Th-PF-ghJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a6e-zR-9Al">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fz4-LM-b3v" kind="relationship" relationship="rootViewController" id="Vgc-vV-fFz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gAf-1e-ZlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="699" y="171"/>
         </scene>
