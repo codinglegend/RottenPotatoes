@@ -17,6 +17,7 @@
 
 @property (nonatomic) NSMutableArray* moviesFound; //an object property always starts out as nil (until you put something in it via alloc init)
 
+
 @end
 
 @implementation MasterViewController
@@ -134,8 +135,23 @@
 }
 
 
+//could use (a collectionView method) didSelectItemAtItemPath
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
+        if ([segue.identifier isEqualToString:@"detailIdentifier"]){
+            NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+            
+            Movies *myMovie = self.moviesFound[selectedIndexPath.item];
+            
+            DetailViewController *detailViewController = [segue destinationViewController];
+            detailViewController.detailItem = myMovie; //detailItem here is the property I defined in DetailViewController.h of type Movies....you then pass in this WHOLE object, allowing you access itss individual properties as I do in the viewDidLoad of the detailViewController.m. the individual properties I access are the picture (as I defined as a property in Movies) and the movie title (as defined in Movies). Final note: should have named Movies just "Movie" since it is a "Movie" object
+            
+            
+        }
+    
+}
 
 
 @end
